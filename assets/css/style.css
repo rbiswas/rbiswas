@@ -92,10 +92,30 @@ body {
 }
 
 .hero-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 4rem;
+    align-items: center;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
     z-index: 2;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    /*border-radius: 50%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);*/
+    animation: slideUp 1s ease-out 0.8s both;
+}
+
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
 }
 
 .hero h1 {

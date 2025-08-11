@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog posts about machine learning, AI, and data science by Rajib Biswas">
+    <title>Blog - Rajib Biswas | ML Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .blog-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .blog-posts {
+            padding: 80px 0;
+        }
+        
+        .post-list {
+            display: grid;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .post-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .post-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        .post-category {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+        
+        .post-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .post-title a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+        
+        .post-title a:hover {
+            color: var(--primary-color);
+        }
+        
+        .post-excerpt {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .read-time {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../" style="text-decoration: none; color: inherit;">Rajib Biswas</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#home">Home</a></li>
+                <li><a href="../#about">About</a></li>
+                <li><a href="../#skills">Skills</a></li>
+                <li><a href="../#projects">Projects</a></li>
+                <li><a href="./">Blog</a></li>
+                <li><a href="../#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <section class="blog-header">
+        <div class="container">
+            <h1>Blog</h1>
+            <p>Insights, tutorials, and thoughts on machine learning and AI</p>
+        </div>
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="post-list">
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">MLOps</span>
+                        <span><i class="fas fa-calendar"></i> March 15, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/deploying-ml-models.html">Deploying ML Models at Scale</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        A comprehensive guide to deploying machine learning models in production environments 
+                        using modern MLOps practices and cloud infrastructure. Learn about containerization, 
+                        CI/CD pipelines, monitoring, and scaling strategies for ML systems.
+                    </p>
+                </article>
+
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">Deep Learning</span>
+                        <span><i class="fas fa-calendar"></i> March 8, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 12 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/transformer-architecture.html">Understanding Transformer Architecture</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Deep dive into the transformer architecture that revolutionized NLP. Explore attention 
+                        mechanisms, positional encoding, and multi-head attention with practical PyTorch 
+                        implementations and real-world applications.
+                    </p>
+                </article>
+
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">Feature Engineering</span>
+                        <span><i class="fas fa-calendar"></i> February 28, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/feature-engineering.html">Feature Engineering Best Practices</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Essential techniques for feature engineering in machine learning projects. From data 
+                        preprocessing and handling missing values to advanced feature selection methods and 
+                        domain-specific transformations.
+                    </p>
+                </article>
+
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">Computer Vision</span>
+                        <span><i class="fas fa-calendar"></i> February 20, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/object-detection-yolo.html">Building Real-time Object Detection with YOLO</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Step-by-step guide to implementing YOLO for real-time object detection. Covers model 
+                        architecture, training on custom datasets, optimization techniques, and deployment 
+                        considerations for production systems.
+                    </p>
+                </article>
+
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">Time Series</span>
+                        <span><i class="fas fa-calendar"></i> February 12, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/time-series-forecasting.html">Advanced Time Series Forecasting Techniques</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Explore modern approaches to time series forecasting using LSTM networks, Prophet, 
+                        and ensemble methods. Learn about handling seasonality, trend analysis, and building 
+                        robust forecasting pipelines.
+                    </p>
+                </article>
+
+                <article class="post-item fade-in">
+                    <div class="post-meta">
+                        <span class="post-category">Data Science</span>
+                        <span><i class="fas fa-calendar"></i> January 25, 2024</span>
+                        <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+                    </div>
+                    <h2 class="post-title">
+                        <a href="./posts/data-preprocessing.html">Data Preprocessing for ML: A Complete Guide</a>
+                    </h2>
+                    <p class="post-excerpt">
+                        Comprehensive guide to data preprocessing techniques including data cleaning, 
+                        normalization, encoding categorical variables, and handling imbalanced datasets. 
+                        Includes Python code examples and best practices.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rajib Biswas. All rights reserved. Built with passion for ML innovation.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+</body>
+</html>

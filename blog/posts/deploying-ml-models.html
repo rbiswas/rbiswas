@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A comprehensive guide to deploying machine learning models at scale using modern MLOps practices">
+    <title>Deploying ML Models at Scale - Rajib Biswas | ML Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+        .post-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+        }
+        
+        .post-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 2rem;
+            line-height: 1.8;
+        }
+        
+        .post-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .post-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .post-excerpt {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+        
+        .post-content h2 {
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .post-content h3 {
+            color: var(--text-primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+        
+        .post-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .post-content code {
+            background: var(--light-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            color: var(--primary-color);
+        }
+        
+        .post-content pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .post-content pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        
+        .post-content ul, .post-content ol {
+            margin: 1.5rem 0;
+            padding-left: 2rem;
+        }
+        
+        .post-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .post-content blockquote {
+            border-left: 4px solid var(--primary-color);
+            background: var(--light-bg);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+        
+        .post-navigation {
+            background: var(--light-bg);
+            padding: 3rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--accent-color);
+        }
+        
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+        
+        .share-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-decoration: none;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        .share-btn.twitter { background: #1da1f2; }
+        .share-btn.linkedin { background: #0077b5; }
+        .share-btn.facebook { background: #3b5998; }
+        
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+            
+            .post-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../../" style="text-decoration: none; color: inherit;">Rajib Biswas</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../../#home">Home</a></li>
+                <li><a href="../../#about">About</a></li>
+                <li><a href="../../#skills">Skills</a></li>
+                <li><a href="../../projects/">Projects</a></li>
+                <li><a href="../">Blog</a></li>
+                <li><a href="../../#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Post Header -->
+    <section class="post-header">
+        <div class="container">
+            <div class="post-meta">
+                <span><i class="fas fa-calendar"></i> March 15, 2024</span>
+                <span><i class="fas fa-clock"></i> 8 min read</span>
+                <span><i class="fas fa-tag"></i> MLOps</span>
+                <span><i class="fas fa-user"></i> Rajib Biswas</span>
+            </div>
+            <h1 class="post-title">Deploying ML Models at Scale</h1>
+            <p class="post-excerpt">
+                A comprehensive guide to deploying machine learning models in production environments 
+                using modern MLOps practices and cloud infrastructure.
+            </p>
+        </div>
+    </section>
+
+    <!-- Post Content -->
+    <article class="post-content">
+        <p>
+            Deploying machine learning models to production is one of the most critical phases in the ML lifecycle. 
+            While training a model that performs well on test data is challenging, ensuring it works reliably, 
+            efficiently, and securely in a production environment presents an entirely different set of challenges.
+        </p>
+
+        <p>
+            In this comprehensive guide, we'll explore the essential components of a robust ML deployment pipeline, 
+            from containerization and orchestration to monitoring and scaling strategies.
+        </p>
+
+        <h2>The MLOps Deployment Pipeline</h2>
+
+        <p>
+            A well-designed deployment pipeline should address several key concerns: reliability, scalability, 
+            monitoring, and maintainability. Let's break down each component:
+        </p>
+
+        <h3>1. Model Containerization</h3>
+
+        <p>
+            Docker containers provide a consistent environment for your ML models, ensuring they run the same way 
+            across development, staging, and production environments.
+        </p>
+
+        <pre><code>FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]</code></pre>
+
+        <h3>2. API Development with FastAPI</h3>
+
+        <p>
+            FastAPI provides an excellent framework for creating ML APIs with automatic documentation, 
+            request validation, and high performance:
+        </p>
+
+        <pre><code>from fastapi import FastAPI
+from pydantic import BaseModel
+import joblib
+import numpy as np
+
+app = FastAPI(title="ML Model API", version="1.0.0")
+
+# Load model at startup
+model = joblib.load("model.pkl")
+
+class PredictionRequest(BaseModel):
+    features: list[float]
+
+class PredictionResponse(BaseModel):
+    prediction: float
+    confidence: float
+
+@app.post("/predict", response_model=PredictionResponse)
+async def predict(request: PredictionRequest):
+    features = np.array(request.features).reshape(1, -1)
+    prediction = model.predict(features)[0]
+    confidence = max(model.predict_proba(features)[0])
+    
+    return PredictionResponse(
+        prediction=prediction,
+        confidence=confidence
+    )</code></pre>
+
+        <h3>3. Kubernetes Deployment</h3>
+
+        <p>
+            Kubernetes provides orchestration capabilities for managing containers at scale. Here's a basic 
+            deployment configuration:
+        </p>
+
+        <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-model-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ml-model
+  template:
+    metadata:
+      labels:
+        app: ml-model
+    spec:
+      containers:
+      - name: ml-model
+        image: your-registry/ml-model:latest
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"</code></pre>
+
+        <h2>Monitoring and Observability</h2>
+
+        <p>
+            Production ML systems require comprehensive monitoring to ensure models continue to perform well 
+            over time. This includes:
+        </p>
+
+        <ul>
+            <li><strong>Performance Monitoring</strong>: Track response times, throughput, and error rates</li>
+            <li><strong>Model Quality Monitoring</strong>: Monitor prediction accuracy and detect model drift</li>
+            <li><strong>Data Quality Monitoring</strong>: Ensure input data quality remains consistent</li>
+            <li><strong>Infrastructure Monitoring</strong>: Monitor resource usage and system health</li>
+        </ul>
+
+        <h3>Implementing Model Monitoring</h3>
+
+        <p>
+            Here's an example of how to add monitoring to your ML API:
+        </p>
+
+        <pre><code>import logging
+from prometheus_client import Counter, Histogram, generate_latest
+from fastapi import FastAPI, Response
+
+# Metrics
+prediction_counter = Counter('ml_predictions_total', 'Total predictions made')
+prediction_latency = Histogram('ml_prediction_duration_seconds', 'Time spent on predictions')
+
+@app.post("/predict")
+async def predict(request: PredictionRequest):
+    with prediction_latency.time():
+        # Your prediction logic here
+        result = model.predict(features)
+        prediction_counter.inc()
+        
+        # Log prediction for monitoring
+        logging.info(f"Prediction made: {result}")
+        
+        return result
+
+@app.get("/metrics")
+async def metrics():
+    return Response(generate_latest(), media_type="text/plain")</code></pre>
+
+        <h2>Scaling Strategies</h2>
+
+        <p>
+            Different ML workloads require different scaling approaches:
+        </p>
+
+        <blockquote>
+            <p>
+                "The key to successful ML deployment is not just making it work, but making it work reliably 
+                at scale while maintaining model performance over time."
+            </p>
+        </blockquote>
+
+        <h3>Horizontal Pod Autoscaling</h3>
+
+        <p>
+            Configure automatic scaling based on CPU usage or custom metrics:
+        </p>
+
+        <pre><code>apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: ml-model-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: ml-model-deployment
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70</code></pre>
+
+        <h2>Security Considerations</h2>
+
+        <p>
+            Security should be built into every layer of your ML deployment:
+        </p>
+
+        <ul>
+            <li>Use HTTPS for all API communications</li>
+            <li>Implement proper authentication and authorization</li>
+            <li>Regularly update dependencies and base images</li>
+            <li>Use secrets management for sensitive configuration</li>
+            <li>Implement rate limiting to prevent abuse</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+
+        <p>
+            Deploying ML models at scale requires careful consideration of many factors beyond just model performance. 
+            By implementing proper containerization, orchestration, monitoring, and security practices, you can 
+            build robust ML systems that serve your users reliably and efficiently.
+        </p>
+
+        <p>
+            Remember that deployment is not a one-time activity but an ongoing process. Continuously monitor your 
+            models, update them as needed, and iterate on your infrastructure to improve performance and reliability.
+        </p>
+
+        <!-- Share Buttons -->
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text=Deploying ML Models at Scale&url=https://rbiswas.github.io/blog/posts/deploying-ml-models.html" 
+               class="share-btn twitter" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://rbiswas.github.io/blog/posts/deploying-ml-models.html" 
+               class="share-btn linkedin" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://rbiswas.github.io/blog/posts/deploying-ml-models.html" 
+               class="share-btn facebook" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook"></i>
+            </a>
+        </div>
+    </article>
+
+    <!-- Post Navigation -->
+    <section class="post-navigation">
+        <div class="nav-links">
+            <a href="../" class="nav-link">
+                <i class="fas fa-arrow-left"></i> Back to Blog
+            </a>
+            <a href="transformer-architecture.html" class="nav-link">
+                Next Post <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rajib Biswas. All rights reserved. Built with passion for ML innovation.</p>
+        </div>
+    </footer>
+
+    <script src="../../assets/js/script.js"></script>
+</body>
+</html>

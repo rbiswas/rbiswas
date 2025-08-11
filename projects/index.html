@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Machine learning projects portfolio by Rajib Biswas - Computer Vision, NLP, and Data Science projects">
+    <title>Projects - Rajib Biswas | ML Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <style>
+        .projects-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+        
+        .projects-content {
+            padding: 80px 0;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-tab {
+            padding: 0.8rem 1.5rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .filter-tab.active,
+        .filter-tab:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .project-detail {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-header {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            padding: 2rem;
+            align-items: center;
+        }
+        
+        .project-thumbnail {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+        
+        .project-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-category {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+        
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .project-metrics {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metric {
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+        
+        .project-tech-stack {
+            padding: 0 2rem 2rem;
+        }
+        
+        .tech-stack-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .project-actions {
+            padding: 0 2rem 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link.primary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .project-link.primary:hover {
+            background: var(--accent-color);
+            transform: translateY(-2px);
+        }
+        
+        .project-link.secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .project-link.secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .project-header {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .project-metrics {
+                justify-content: center;
+            }
+            
+            .project-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="../" style="text-decoration: none; color: inherit;">Rajib Biswas</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="../#home">Home</a></li>
+                <li><a href="../#about">About</a></li>
+                <li><a href="../#skills">Skills</a></li>
+                <li><a href="./">Projects</a></li>
+                <li><a href="../blog/">Blog</a></li>
+                <li><a href="../#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Header -->
+    <section class="projects-header">
+        <div class="container">
+            <h1>My Projects</h1>
+            <p>A collection of machine learning projects from research to production</p>
+        </div>
+    </section>
+
+    <!-- Projects Content -->
+    <section class="projects-content">
+        <div class="container">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All Projects</button>
+                <button class="filter-tab" data-filter="computer-vision">Computer Vision</button>
+                <button class="filter-tab" data-filter="nlp">NLP</button>
+                <button class="filter-tab" data-filter="time-series">Time Series</button>
+                <button class="filter-tab" data-filter="mlops">MLOps</button>
+                <button class="filter-tab" data-filter="research">Research</button>
+            </div>
+
+            <!-- Project 1: Computer Vision Pipeline -->
+            <div class="project-detail fade-in" data-category="computer-vision mlops">
+                <div class="project-header">
+                    <div class="project-thumbnail">
+                        <img src="../assets/images/project1.jpg" alt="Computer Vision Pipeline" loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Computer Vision</span>
+                        <h3>Real-time Object Detection Pipeline</h3>
+                        <p class="project-description">
+                            End-to-end object detection system using YOLOv8 architecture, deployed on AWS with 
+                            real-time inference capabilities. Features custom dataset training, model optimization, 
+                            and scalable deployment infrastructure with 95% accuracy on production data.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">30ms</span>
+                                <span class="metric-label">Inference Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">1000+</span>
+                                <span class="metric-label">Images/Hour</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4 class="tech-stack-title">Technology Stack</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">YOLOv8</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                    </div>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/rbiswas/computer-vision-pipeline" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-file-alt"></i> Documentation
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 2: NLP Sentiment Analyzer -->
+            <div class="project-detail fade-in" data-category="nlp">
+                <div class="project-header">
+                    <div class="project-thumbnail">
+                        <img src="../assets/images/project2.jpg" alt="NLP Sentiment Analyzer" loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Natural Language Processing</span>
+                        <h3>Multi-domain Sentiment Analysis System</h3>
+                        <p class="project-description">
+                            Advanced sentiment analysis system using transformer models with domain adaptation capabilities. 
+                            Achieves state-of-the-art performance on multiple benchmark datasets and includes real-time 
+                            API for production use with custom domain fine-tuning.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">94.2%</span>
+                                <span class="metric-label">F1 Score</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">50ms</span>
+                                <span class="metric-label">Response Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">5</span>
+                                <span class="metric-label">Domains</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4 class="tech-stack-title">Technology Stack</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Transformers</span>
+                        <span class="skill-tag">BERT</span>
+                        <span class="skill-tag">RoBERTa</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Kubernetes</span>
+                    </div>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/rbiswas/nlp-sentiment-analyzer" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-external-link-alt"></i> Try Demo
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-chart-bar"></i> Performance Metrics
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 3: Time Series Forecasting -->
+            <div class="project-detail fade-in" data-category="time-series research">
+                <div class="project-header">
+                    <div class="project-thumbnail">
+                        <img src="../assets/images/project3.jpg" alt="Time Series Forecasting" loading="lazy">
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Time Series & Research</span>
+                        <h3>Ensemble Forecasting for Financial Markets</h3>
+                        <p class="project-description">
+                            Advanced time series forecasting system combining LSTM networks, ARIMA models, and XGBoost 
+                            for financial market prediction. Features automated retraining pipeline, risk assessment 
+                            modules, and comprehensive backtesting framework with research publication.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">23.5%</span>
+                                <span class="metric-label">MAPE Reduction</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">0.89</span>
+                                <span class="metric-label">Sharpe Ratio</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">2 Years</span>
+                                <span class="metric-label">Backtest Period</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4 class="tech-stack-title">Technology Stack</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LSTM</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">ARIMA</span>
+                        <span class="skill-tag">Prophet</span>
+                        <span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">Apache Airflow</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">QuantLib</span>
+                    </div>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/rbiswas/time-series-forecasting" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-file-alt"></i> Research Paper
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-chart-line"></i> Interactive Results
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 4: MLOps Platform -->
+            <div class="project-detail fade-in" data-category="mlops">
+                <div class="project-header">
+                    <div class="project-thumbnail">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">MLOps</span>
+                        <h3>End-to-End MLOps Platform</h3>
+                        <p class="project-description">
+                            Complete MLOps platform for model lifecycle management including automated training pipelines, 
+                            model versioning, A/B testing framework, monitoring dashboards, and automated deployment 
+                            with rollback capabilities. Supports multiple ML frameworks and cloud providers.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">50+</span>
+                                <span class="metric-label">Models Managed</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.9%</span>
+                                <span class="metric-label">Uptime</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">80%</span>
+                                <span class="metric-label">Deployment Time Reduction</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4 class="tech-stack-title">Technology Stack</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">Apache Airflow</span>
+                        <span class="skill-tag">Prometheus</span>
+                        <span class="skill-tag">Grafana</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">ElasticSearch</span>
+                    </div>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/rbiswas/mlops-platform" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-book"></i> Documentation
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-video"></i> Demo Video
+                    </a>
+                </div>
+            </div>
+
+            <!-- Project 5: Recommendation System -->
+            <div class="project-detail fade-in" data-category="research">
+                <div class="project-header">
+                    <div class="project-thumbnail">
+                        <i class="fas fa-thumbs-up"></i>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-category">Research</span>
+                        <h3>Graph Neural Network Recommendation System</h3>
+                        <p class="project-description">
+                            Novel recommendation system using Graph Neural Networks to capture complex user-item 
+                            interactions. Incorporates temporal dynamics, multi-modal features, and handles cold-start 
+                            problems. Published research with significant improvements over baseline methods.
+                        </p>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <span class="metric-value">15.3%</span>
+                                <span class="metric-label">NDCG Improvement</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">1M+</span>
+                                <span class="metric-label">User Interactions</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">Published</span>
+                                <span class="metric-label">Research Paper</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-tech-stack">
+                    <h4 class="tech-stack-title">Technology Stack</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">PyTorch Geometric</span>
+                        <span class="skill-tag">GNN</span>
+                        <span class="skill-tag">Neo4j</span>
+                        <span class="skill-tag">DGL</span>
+                        <span class="skill-tag">Ray</span>
+                        <span class="skill-tag">Weights & Biases</span>
+                        <span class="skill-tag">Apache Spark</span>
+                        <span class="skill-tag">Redis</span>
+                    </div>
+                </div>
+                
+                <div class="project-actions">
+                    <a href="https://github.com/rbiswas/gnn-recommendation" class="project-link primary" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-file-alt"></i> Research Paper
+                    </a>
+                    <a href="#" class="project-link secondary">
+                        <i class="fas fa-database"></i> Dataset
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Rajib Biswas. All rights reserved. Built with passion for ML innovation.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/script.js"></script>
+    <script>
+        // Project filtering functionality
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const projects = document.querySelectorAll('.project-detail');
+
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                filterTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                const filter = this.getAttribute('data-filter');
+                
+                projects.forEach(project => {
+                    if (filter === 'all' || project.getAttribute('data-category').includes(filter)) {
+                        project.style.display = 'block';
+                        setTimeout(() => {
+                            project.style.opacity = '1';
+                            project.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        project.style.opacity = '0';
+                        project.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            project.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>detail {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            margin-bottom: 3rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .project-detail:hover {
+            transform: translateY(-5px);
+        }
+        
+        .project-
